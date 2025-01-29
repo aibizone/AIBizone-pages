@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AIBizone - GitHub Pages</title>
+  
+  <!-- 日本語対応のスタイリッシュなフォント例：Shippori Mincho + Noto Sans JP -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link 
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Shippori+Mincho:wght@500;700&display=swap" 
+    rel="stylesheet"
+  >
+
+  <style>
+    /* 全体設定 */
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Noto Sans JP', sans-serif;
+      background-color: #f8fafc;
+      color: #333;
+      line-height: 1.5;
+    }
+
+    /* ヘッダー */
+    header {
+      background-color: #212529;
+      color: #ffffff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    header img {
+      height: 40px;
+    }
+    .logo-container span {
+      font-size: 1.5rem;
+      font-weight: bold;
+      font-family: 'Shippori Mincho', serif;
+    }
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 700;
+      position: relative;
+      padding: 5px;
+      font-family: 'Shippori Mincho', serif;
+    }
+    nav a::after {
+      content: "";
+      display: block;
+      width: 0%;
+      height: 2px;
+      background: #ffcc00;
+      transition: width 0.3s;
+      margin: 0 auto;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+    }
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* ヒーローセクション */
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+      background: linear-gradient(135deg, #4caf50 0%, #2a7d3c 100%);
+      color: #ffffff;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      font-family: 'Shippori Mincho', serif;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
+      margin: 0 auto 30px auto;
+    }
+    .hero a {
+      display: inline-block;
+      padding: 15px 30px;
+      background-color: #ffffff;
+      color: #4caf50;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: bold;
+      transition: all 0.3s ease-in-out;
+      font-family: 'Shippori Mincho', serif;
+    }
+    .hero a:hover {
+      background-color: #ffcc00;
+      color: #212529;
+    }
+
+    /* 画像セクション */
+    .image-section {
+      position: relative;
+      margin: 0;
+    }
+    .image-section img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      max-height: 500px; 
+    }
+    .image-overlay {
+      position: absolute;
+      top: 50%; 
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: #ffffff;
+    }
+    .image-overlay p {
+      font-size: 2.0rem;
+      font-family: 'Shippori Mincho', serif;
+      margin: 0.5em 0;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 2s ease, transform 2s ease;
+      text-shadow: 
+        -1px -1px 0 #000,
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000;
+      white-space: nowrap;
+    }
+    .image-overlay p.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .image-overlay p:nth-child(2) {
+      transition-delay: 2.0s;
+    }
+
+    /* 業務内容タイトル */
+    .section-title {
+      text-align: center;
+      margin: 40px auto 20px;
+      font-family: 'Shippori Mincho', serif;
+      font-size: 1.8rem;
+      cursor: pointer;
+      transition: color 0.3s;
+      padding: 10px;
+      border-radius: 4px;
+    }
+    .section-title:hover {
+      color: #4caf50;
+      background-color: rgba(76, 175, 80, 0.1);
+    }
+
+    /* サービスカード全体 */
+    .service-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin: 20px auto 40px;
+      max-width: 1200px;
+      padding: 20px;
+    }
+
+    /* カードデザイン */
+    .service-card {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      width: 300px;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card h2 {
+      color: #4caf50;
+      margin-bottom: 10px;
+      font-size: 1.5rem;
+      font-family: 'Shippori Mincho', serif;
+    }
+    .service-card p {
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 0.5em;
+    }
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    }
+    .service-card::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      height: 4px;
+      background: linear-gradient(45deg, #4caf50, #a5d6a7);
+      transition: all 0.3s;
+    }
+    .service-card:hover::before {
+      width: 100%;
+    }
+
+    /* 追加コンテンツ */
+    .extra-content {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .extra-content p {
+      margin-top: 0.5em;
+    }
+    .extra-content img {
+      width: 100%;
+      border-radius: 4px;
+      margin-top: 1em;
+    }
+    .service-card.expanded .extra-content {
+      max-height: 1500px;
+    }
+
+    /* フッター */
+    footer {
+      background-color: #212529;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      margin-top: 20px;
+    }
+    .sns-links {
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .sns-links a {
+      color: #ffcc00;
+      text-decoration: none;
+      font-weight: bold;
+      display: block;
+      min-width: 120px;
+      text-align: center;
+      font-size: 14px;
+      line-height: 1.5;
+      border: 1px solid #ffcc00;
+      border-radius: 4px;
+      padding: 5px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .sns-links a:hover {
+      background-color: #ffcc00;
+      color: #212529;
+    }
+    footer p {
+      margin: 5px 0;
+    }
+    footer a {
+      color: #ffcc00;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* レスポンシブ対応 */
+    @media screen and (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero p {
+        font-size: 1rem;
+        white-space: normal;
+      }
+      .image-overlay p {
+        font-size: 1.5rem;
+      }
+      .service-card {
+        width: 100%;
+        max-width: 500px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ヘッダー -->
+  <header>
+    <div class="logo-container">
+      <img src="assets/images/AIBizone決定版.png" alt="AIBizoneロゴ">
+      <span>AIBizone</span>
+    </div>
+    <nav>
+      <a href="https://ameblo.jp/aibizone/entrylist.html" target="_blank" rel="noopener">ブログ</a>
+    </nav>
+  </header>
+
+  <!-- ヒーローセクション -->
+  <div class="hero">
+    <h1>AIで業務をもっと効率的に、もっと創造的に</h1>
+    <p>AIBizoneは生成AIを活用して、あなたのビジネスを次のレベルへ導きます。</p>
+    <a href="about-me.html">自己紹介を見る</a>
+  </div>
+
+  <!-- 画像セクション -->
+  <div class="image-section">
+    <img src="assets/images/hero-image.jpg" alt="農村の風景">
+    <div class="image-overlay">
+      <p>AIで新しい未来を創造したい。</p>
+      <p>その気持ちを後押しする為、全力でサポートします。</p>
+    </div>
+  </div>
+
+  <!-- 業務内容タイトル -->
+  <h2 class="section-title">業務内容</h2>
+
+  <!-- サービスカード -->
+  <div class="service-container">
+    <div class="service-card">
+      <h2>生成AI導入支援</h2>
+      <p>ChatGPTやClaude、Geminiなどの生成AIツールをスムーズに導入するための支援を行います。</p>
+      <div class="extra-content">
+        <p>
+          企業や個人のニーズに合わせた最適なツール選定から、具体的な活用方法の提案、さらに操作研修やプロンプト作成のアドバイスまで幅広くサポートします。
+          業務効率化や生産性向上を目指し、実務で即活用できるノウハウを提供。さらに、導入後も継続的なサポートを行い、AI活用を通じて成長を支援します。
+        </p>
+        <img src="assets/images/index1.jpg" alt="生成AI導入支援イメージ">
+      </div>
+    </div>
+
+    <div class="service-card">
+      <h2>活用方法の指導</h2>
+      <p>生成AIを効果的に活用するためのトレーニングや具体的な使い方の指導を提供します。</p>
+      <div class="extra-content">
+        <p>
+          初心者向けの基本操作から、実務に直結する応用的な活用方法まで、お客様のレベルに合わせた指導を行います。
+          プロンプト設計やAIとの効果的な対話スキルを磨くことで、業務効率化やクリエイティブなアイデア創出を実現します。
+          また、具体的な課題に対応したカスタマイズ指導も可能です。導入後のフォローアップも充実しており、生成AIを最大限に活用できる環境を整えます。
+        </p>
+        <img src="assets/images/index2.jpg" alt="活用方法の指導イメージ">
+      </div>
+    </div>
+
+    <div class="service-card">
+      <h2>生成AI選定サポート</h2>
+      <p>ビジネスに最適な生成AIツールを選定し、導入の成功をサポートします。</p>
+      <div class="extra-content">
+        <p>
+          お客様の目的や業務内容に応じて、ChatGPTをはじめとする生成AIツールの特性を丁寧に分析し、最適な選択肢をご提案します。
+          導入時の技術的なサポートだけでなく、業務フローへの適応やコスト面の最適化も支援。さらに、選定したツールの効果的な活用方法やトレーニングを提供し、
+          スムーズな導入を実現します。ツール選定から運用開始後のフォローアップまで、トータルでサポートいたします。
+        </p>
+        <img src="assets/images/index3.jpg" alt="生成AI選定サポートイメージ">
+      </div>
+    </div>
+  </div>
+
+  <!-- フッター -->
+  <footer>
+    <div class="sns-links">
+      <a href="https://fb.com/aibizone.yoshikawa/" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://x.com/aibizone" target="_blank" rel="noopener">X（Twitter）</a>
+      <a href="https://www.instagram.com/aibizone" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://ameblo.jp/aibizone/entrylist.html" target="_blank" rel="noopener">Amebaブログ</a>
+      <a href="https://bsky.app/profile/aibizone.bsky.social" target="_blank" rel="noopener">Bluesky</a>
+      <a href="https://line.me/S/shop/sticker/author/5090519" target="_blank" rel="noopener">LINEスタンプ販売中</a>
+    </div>
+    <p>&copy; 2025 AIBizone. All rights reserved. | <a href="about.html">会社情報</a></p>
+  </footer>
+
+  <!-- スクロールアニメーション & カード開閉用スクリプト -->
+  <script>
+    // 画像上テキストのフェードイン
+    document.addEventListener("DOMContentLoaded", () => {
+      const imageSection = document.querySelector(".image-section");
+      const overlayText = document.querySelectorAll(".image-overlay p");
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            overlayText.forEach((p, index) => {
+              setTimeout(() => {
+                p.classList.add("show");
+              }, index * 500);
+            });
+            observer.unobserve(imageSection);
+          }
+        });
+      });
+      observer.observe(imageSection);
+    });
+
+    // 全カード展開/折りたたみ制御
+    document.addEventListener('DOMContentLoaded', () => {
+      const serviceCards = document.querySelectorAll('.service-card');
+      const sectionTitle = document.querySelector('.section-title');
+      let isExpanded = false;
+
+      // セクションタイトルクリック処理
+      sectionTitle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        isExpanded = !isExpanded;
+        
+        serviceCards.forEach(card => {
+          isExpanded ? 
+            card.classList.add('expanded') :
+            card.classList.remove('expanded');
+        });
+      });
+
+      // ドキュメント全体のクリック処理
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.service-container')) {
+          serviceCards.forEach(card => {
+            card.classList.remove('expanded');
+          });
+          isExpanded = false;
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>プロンプトページ - AIBizone</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        header img {
+            height: 40px;
+        }
+        .logo-container span {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        nav {
+            display: flex;
+            gap: 15px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        main {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #4caf50;
+        }
+        /* シンプルなリスト表示用のスタイル */
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        li {
+            margin: 20px 0;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        li:last-child {
+            border-bottom: none;
+        }
+        .prompt-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #4caf50;
+        }
+        .prompt-description {
+            margin-bottom: 10px;
+        }
+        .download-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .download-button:hover {
+            background-color: #45a049;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .sns-links {
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .sns-links a {
+            color: #4caf50;
+            text-decoration: none;
+            font-weight: bold;
+            display: block;
+            width: 120px;
+            text-align: center;
+            font-size: 14px;
+            line-height: 1.5;
+            vertical-align: middle;
+        }
+        .sns-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="assets/images/AIBizone決定版.png" alt="AIBizoneロゴ">
+            <span>AIBizone</span>
+        </div>
+        <nav>
+            <a href="index.html">トップページ</a>
+            <a href="contact.html">お問い合わせ</a>
+        </nav>
+    </header>
+    <main>
+        <h1>プロンプトページ</h1>
+        <p style="text-align: center;">以下のジャンルごとのプロンプトをダウンロードいただけます。</p>
+        <ul>
+            <li>
+                <div class="prompt-title">ビジネスプロンプト</div>
+                <div class="prompt-description">
+                    ビジネスのアイデア、提案書作成、交渉術など、あらゆるビジネスシーンをサポートするプロンプト集です。
+                </div>
+                <a href="assets/prompts/business.pdf" class="download-button">ダウンロード</a>
+            </li>
+            <li>
+                <div class="prompt-title">クリエイティブプロンプト</div>
+                <div class="prompt-description">
+                    アイデア発想、デザイン、ストーリー作成などのクリエイティブな作業をサポートするプロンプト集です。
+                </div>
+                <a href="assets/prompts/creative.pdf" class="download-button">ダウンロード</a>
+            </li>
+            <li>
+                <div class="prompt-title">教育プロンプト</div>
+                <div class="prompt-description">
+                    学習計画の作成、宿題サポート、教育教材アイデアなどを豊富にサポートするプロンプト集です。
+                </div>
+                <a href="assets/prompts/education.pdf" class="download-button">ダウンロード</a>
+            </li>
+            <li>
+                <div class="prompt-title">マーケティングプロンプト</div>
+                <div class="prompt-description">
+                    マーケティング戦略の立案、キャンペーンアイデア、SNS運用のヒントなどを網羅したプロンプト集です。
+                </div>
+                <a href="assets/prompts/marketing.pdf" class="download-button">ダウンロード</a>
+            </li>
+        </ul>
+    </main>
+    <footer>
+        <div class="sns-links">
+            <a href="https://fb.com/aibizone.yoshikawa/" target="_blank">Facebook</a>
+            <a href="https://x.com/aibizone" target="_blank">X（Twitter）</a>
+            <a href="https://www.instagram.com/aibizone" target="_blank">Instagram</a>
+            <a href="https://ameblo.jp/aibizone/entrylist.html" target="_blank">Amebaブログ</a>
+            <a href="https://bsky.app/profile/aibizone.bsky.social" target="_blank">Bluesky</a>
+            <a href="https://line.me/S/shop/sticker/author/5090519" target="_blank">Lineスタンプ</a>
+        </div>
+        <p>&copy; 2025 AIBizone. All rights reserved. | <a href="about.html">会社情報</a></p>
+    </footer>
+</body>
+</html>
